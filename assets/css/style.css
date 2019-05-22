@@ -1,0 +1,71 @@
+body {
+  background-color: black;
+  font-family: "Special Elite", cursive;
+  font-size: 18px;
+  padding: 10px 50px;
+  line-height: 1.6;
+}
+
+h1 {
+  font-size: 20px;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+header {
+  height: 200px;
+  width: 700px;
+  position: relative;
+  border: 2px dashed white;
+  margin: 0 auto;
+}
+.logo {
+  margin-left: 35px;
+  margin-top: 35px;
+}
+.abs {
+  position: absolute;
+  width: 120px;
+  top: 0;
+  right: 0;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+#word {
+  font-size: 26px;
+  color: darkred;
+}
+.info,
+.image {
+  width: 300px;
+  height: 800px;
+  border: 1px dashed white;
+  color: white;
+  padding: 15px;
+  text-align: center;
+}
+.instraction {
+  display: flex;
+  margin-top: 15px;
+  height: 200px;
+  flex-direction: column;
+}
+
+.info {
+  display: flex;
+
+  flex-direction: column;
+}
+.box {
+  height: 80px;
+  padding: 15px;
+}
+main {
+  padding: 15px;
+
+  display: flex;
+  justify-content: center;
+}
