@@ -3,21 +3,19 @@ var lettersGuessed;
 var image;
 var currentWord;
 var band;
+var usersWord = [];
 
-function resetGame() {
+function initGame() {
   guessesLeft = 12;
   usersGuessesLeft = document.getElementById("guessesLeft");
+  usersGuessesLeft.textContent = guessesLeft;
   lettersGuessed = "";
   usersLettersGuessed = document.getElementById("guessed");
-  usersLettersGuessed.textContent = lettersGuessed;
-  currentImage = document.createElement("img");
-  currentImage.setAttribute("width", "300px");
-
+  currentImage = document.getElementById("foto");
   band = getRandom(bands);
   currentImage.setAttribute("src", band.link);
-  document.getElementById("image").appendChild(currentImage);
   currentWord = writeName(band.name);
-  usersGuessesLeft.textContent = guessesLeft;
+  usersLettersGuessed.textContent = lettersGuessed;
 }
 
 var bands = [
@@ -35,6 +33,7 @@ function getRandom(list) {
 }
 
 function writeName(word) {
+  document.getElementById("word");
   for (var i = 0; i < word.length; i++) {
     var box = document.createElement("div");
     var letter = document.getElementById("word").appendChild(box);
@@ -42,9 +41,10 @@ function writeName(word) {
     letter.classList.add(word[i]);
   }
 }
-var usersWord = [];
+
 function game() {
-  resetGame();
+  initGame();
+
   document.onkeyup = function(event) {
     var letter = event.key.toUpperCase();
     usersLettersGuessed.textContent = usersLettersGuessed.textContent.concat(
@@ -61,13 +61,23 @@ function game() {
         });
       }
     }
-    if (usersWord.length === band.name.length) {
+
+    if (
+      band.name
+        .split("")
+        .sort()
+        .join() === usersWord.sort().join()
+    ) {
       alert("YOU WIN!");
+      location.reload();
+      return;
     }
+
     guessesLeft--;
     usersGuessesLeft.textContent = guessesLeft;
     if (guessesLeft === 0) {
       alert("YOU LOST! THE BAND NAME'S IS " + band.name);
+      location.reload();
     }
   };
 }
