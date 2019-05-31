@@ -73,12 +73,20 @@ function writeName(word) {
 
 function game() {
   initGame();
+  var key = [];
 
   document.onkeyup = function(event) {
-    var letter = event.key.toUpperCase();
-    usersLettersGuessed.textContent = usersLettersGuessed.textContent.concat(
-      letter
-    );
+    if (key.includes(event.key) == false) {
+      var letter = event.key.toUpperCase();
+      if (band.name.indexOf(letter) == -1) {
+        usersLettersGuessed.textContent = usersLettersGuessed.textContent.concat(
+          letter
+        );
+      }
+      guessesLeft--;
+      usersGuessesLeft.textContent = guessesLeft;
+      key.push(event.key);
+    }
 
     for (var i = 0; i < band.name.length; i++) {
       if (letter === band.name[i]) {
@@ -109,8 +117,6 @@ function game() {
       }, 100);
     }
 
-    guessesLeft--;
-    usersGuessesLeft.textContent = guessesLeft;
     if (guessesLeft === 0) {
       // debugger;
       currentImage = document.getElementById("foto");
